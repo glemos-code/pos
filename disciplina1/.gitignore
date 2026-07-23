@@ -1,0 +1,33 @@
+# Dependências e builds modernos
+node_modules/
+dist/
+build/
+.tsbuildinfo
+
+# Arquivos temporários e testes do Node.js 24
+.node-test-repl
+coverage/
+.nyc_output/
+
+# Logs e relatórios de erro comuns
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Modelos do TensorFlow.js e datasets pesados
+/models/
+*.weights.bin
+model.json
+*.h5
+*.onnx
+
+# Segurança e ambiente local
+.env
+.env.local
+.env.*.local
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
