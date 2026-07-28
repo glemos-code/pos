@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Marina Costa",
+    "yearsExperience": 6,
+    "seniority": "mid",
+    "skills": ["java", "spring", "kafka", "sql"],
+    "salaryExpectation": 9500
+  },
+  {
+    "id": 2,
+    "name": "Carlos Mendes",
+    "yearsExperience": 3,
+    "seniority": "junior",
+    "skills": ["javascript", "react", "sql"],
+    "salaryExpectation": 6200
+  },
+  {
+    "id": 3,
+    "name": "Ana Pereira",
+    "yearsExperience": 9,
+    "seniority": "senior",
+    "skills": ["java", "spring", "docker", "kafka", "aws"],
+    "salaryExpectation": 13500
+  },
+  {
+    "id": 4,
+    "name": "Bruno Silva",
+    "yearsExperience": 4,
+    "seniority": "mid",
+    "skills": ["python", "sql", "docker"],
+    "salaryExpectation": 7800
+  }
+]

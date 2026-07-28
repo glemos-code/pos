@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RH System - Candidate/Job Match</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">AI + HR exercise</p>
+          <h1>Candidate and job registration</h1>
+          <p class="subtitle">Add, edit, and organize data to prepare the match and training flow.</p>
+        </div>
+      </header>
+
+      <section class="panel-grid top-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <h2>Training and matches</h2>
+            <p>Use the button below to start training and generate the possible matches between candidates and jobs.</p>
+          </div>
+          <div class="form-actions">
+            <button type="button" id="trainModelButton">Train model</button>
+          </div>
+          <div id="trainingStatus" class="status-box">Waiting for training...</div>
+        </article>
+
+        <article class="panel match-panel">
+          <div class="panel-header">
+            <h2>Possible matches</h2>
+            <p>Results will appear here with the compatibility percentage for each candidate.</p>
+          </div>
+          <div id="matchesResults" class="card-list"></div>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <h2>Candidates</h2>
+            <p>Register and edit professional profiles.</p>
+          </div>
+
+          <form id="candidateForm" class="form">
+            <input type="hidden" id="candidateId" />
+            <div class="form-row">
+              <label>Name
+                <input id="candidateName" required />
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Experience (years)
+                <input id="candidateExperience" type="number" min="0" required />
+              </label>
+              <label>Seniority
+                <select id="candidateSeniority" required>
+                  <option value="júnior">Junior</option>
+                  <option value="pleno">Mid</option>
+                  <option value="sênior">Senior</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Skills (comma separated)
+                <input id="candidateSkills" placeholder="java, spring, kafka" required />
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Salary expectation
+                <input id="candidateSalary" type="number" min="0" required />
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" id="candidateSubmitButton">Add candidate</button>
+              <button type="button" id="candidateCancelButton" class="secondary">Cancel</button>
+            </div>
+          </form>
+
+          <div id="candidateList" class="card-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <h2>Jobs</h2>
+            <p>Register and edit job requirements.</p>
+          </div>
+
+          <form id="jobForm" class="form">
+            <input type="hidden" id="jobId" />
+            <div class="form-row">
+              <label>Title
+                <input id="jobTitle" required />
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Minimum seniority
+                <select id="jobSeniority" required>
+                  <option value="júnior">Junior</option>
+                  <option value="pleno">Mid</option>
+                  <option value="sênior">Senior</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Required skills (comma separated)
+                <input id="jobSkills" placeholder="java, spring, docker" required />
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Minimum salary
+                <input id="jobMinSalary" type="number" min="0" required />
+              </label>
+              <label>Maximum salary
+                <input id="jobMaxSalary" type="number" min="0" required />
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" id="jobSubmitButton">Add job</button>
+              <button type="button" id="jobCancelButton" class="secondary">Cancel</button>
+            </div>
+          </form>
+
+          <div id="jobList" class="card-list"></div>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel full-width">
+          <div class="panel-header">
+            <h2>Possible matches</h2>
+            <p>Results will appear here with the compatibility percentage for each candidate.</p>
+          </div>
+          <div id="matchesResults" class="card-list"></div>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel full-width">
+          <div class="panel-header">
+            <h2>Real training history</h2>
+            <p>Register examples of hiring, approved interviews, rejections, and other events that will become labels for training.</p>
+          </div>
+
+          <form id="historyForm" class="form">
+            <div class="form-row">
+              <label>Candidate ID
+                <input id="historyCandidateId" type="number" required />
+              </label>
+              <label>Job ID
+                <input id="historyJobId" type="number" required />
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Status
+                <select id="historyStatus">
+                  <option value="contratado">Hired</option>
+                  <option value="entrevista_aprovada">Interview approved</option>
+                  <option value="rejeitado">Rejected</option>
+                  <option value="avaliacao_recrutador">Recruiter evaluation</option>
+                </select>
+              </label>
+              <label>Label
+                <select id="historyLabel">
+                  <option value="1">1 - good match</option>
+                  <option value="0">0 - bad match</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Notes
+                <textarea id="historyNotes" rows="3"></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit">Add to history</button>
+            </div>
+          </form>
+
+          <div id="historyList" class="card-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./src/index.js"></script>
+  </body>
+</html>
