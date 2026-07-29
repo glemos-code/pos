@@ -96,6 +96,37 @@ export class ModelTrainingController {
     this.setLoading(false);
   }
 
+  getSeniorityRank(seniority) {
+    const rank = { junior: 0, mid: 1, senior: 2 };
+    return rank[String(seniority || '').toLowerCase()] ?? 0;
+  }
+
+  buildFitAnalysis(candidate, job) {
+    const candidateSkills = Array.isArray(candidate.skills) ? candidate.skills : [];
+    const requiredSkills = Array.isArray(job.requiredSkills) ? job.requiredSkills : [];
+
+    const matchedSkills = candidateSkills.filter((skill) => requiredSkills.includes(skill));
+    const missingSkills = requiredSkills.filter((skill) => !candidateSkills.includes(skill));
+
+    const candidateRank = this.getSeniorityRank(candidate.seniority);
+    const jobRank = this.getSeniorityRank(job.minimumSeniority);
+    const seniorityFit = candidateRank >= jobRank;
+
+    const [minSalary, maxSalary] = Array.isArray(job.salaryRange) ? job.salaryRange : [0, 0];
+    const salary = Number(candidate.salaryExpectation || 0);
+    const salaryFit = salary >= minSalary && salary <= maxSalary;
+
+    return {
+      matchedSkills,
+      missingSkills,
+      seniorityFit,
+      salaryFit,
+      salary,
+      minSalary,
+      maxSalary,
+    };
+  }
+
   renderResults() {
     const byJob = new Map();
 
@@ -113,6 +144,7 @@ export class ModelTrainingController {
         }
 
         byJob.get(jobId).candidates.push({
+          candidate,
           candidateName: candidate.name,
           score: Math.round((Number(job.score) || 0) * 100),
         });
@@ -129,7 +161,25 @@ export class ModelTrainingController {
           <p><strong>Minimum seniority:</strong> ${job.minimumSeniority}</p>
           <p><strong>Skills:</strong> ${skills}</p>
           <ul>
-            ${sortedCandidates.map((item) => `<li>${item.candidateName} - ${item.score}%</li>`).join('')}
+            ${sortedCandidates.map((item) => {
+              const analysis = this.buildFitAnalysis(item.candidate, job);
+              const overlap = `${analysis.matchedSkills.length}/${(job.requiredSkills || []).length}`;
+              const missing = analysis.missingSkills.length ? analysis.missingSkills.join(', ') : 'none';
+              const seniorityStatus = analysis.seniorityFit
+                ? `ok (${item.candidate.seniority} >= ${job.minimumSeniority})`
+                : `below required (${item.candidate.seniority} < ${job.minimumSeniority})`;
+              const salaryStatus = analysis.salaryFit
+                ? `within range ($${analysis.minSalary} - $${analysis.maxSalary})`
+                : `outside range ($${analysis.minSalary} - $${analysis.maxSalary})`;
+
+              return `<li>
+                <strong>${item.candidateName}</strong> - ${item.score}%
+                <div>Skills match: ${overlap}</div>
+                <div>Missing required skills: ${missing}</div>
+                <div>Seniority: ${seniorityStatus}</div>
+                <div>Salary expectation: $${analysis.salary} (${salaryStatus})</div>
+              </li>`;
+            }).join('')}
           </ul>
         </article>
       `;

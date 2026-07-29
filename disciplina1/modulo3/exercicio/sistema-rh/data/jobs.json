@@ -1,23 +1,750 @@
 [
-  {
-    "id": 10,
-    "title": "Mid Backend Developer",
-    "minimumSeniority": "mid",
-    "requiredSkills": ["java", "spring", "docker"],
-    "salaryRange": [8000, 11000]
-  },
-  {
-    "id": 11,
-    "title": "Junior Frontend Developer",
-    "minimumSeniority": "junior",
-    "requiredSkills": ["javascript", "react"],
-    "salaryRange": [5000, 7000]
-  },
-  {
-    "id": 12,
-    "title": "Senior Backend Architect",
-    "minimumSeniority": "senior",
-    "requiredSkills": ["java", "spring", "aws", "kafka"],
-    "salaryRange": [14000, 18000]
-  }
+    {
+        "id":  10,
+        "title":  "Mid Backend Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "java",
+                               "spring",
+                               "docker"
+                           ],
+        "salaryRange":  [
+                            8000,
+                            11000
+                        ]
+    },
+    {
+        "id":  11,
+        "title":  "Junior Frontend Developer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "javascript",
+                               "react"
+                           ],
+        "salaryRange":  [
+                            5000,
+                            7000
+                        ]
+    },
+    {
+        "id":  12,
+        "title":  "Senior Backend Architect",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "java",
+                               "spring",
+                               "aws",
+                               "kafka"
+                           ],
+        "salaryRange":  [
+                            14000,
+                            18000
+                        ]
+    },
+    {
+        "id":  13,
+        "title":  "Mid Frontend Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "kafka",
+                               "python",
+                               "postgresql",
+                               "aws"
+                           ],
+        "salaryRange":  [
+                            8570,
+                            12051
+                        ]
+    },
+    {
+        "id":  14,
+        "title":  "Junior Cloud Engineer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "go",
+                               "python",
+                               "sql",
+                               "spring",
+                               "node"
+                           ],
+        "salaryRange":  [
+                            5340,
+                            8171
+                        ]
+    },
+    {
+        "id":  15,
+        "title":  "Junior Frontend Developer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "kafka",
+                               "react",
+                               "javascript"
+                           ],
+        "salaryRange":  [
+                            5188,
+                            7774
+                        ]
+    },
+    {
+        "id":  16,
+        "title":  "Senior Integration Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "node",
+                               "kafka",
+                               "typescript"
+                           ],
+        "salaryRange":  [
+                            14956,
+                            16965
+                        ]
+    },
+    {
+        "id":  17,
+        "title":  "Senior Integration Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "kubernetes",
+                               "sql",
+                               "react",
+                               "node"
+                           ],
+        "salaryRange":  [
+                            16113,
+                            18528
+                        ]
+    },
+    {
+        "id":  18,
+        "title":  "Mid Frontend Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "kubernetes",
+                               "typescript",
+                               "postgresql"
+                           ],
+        "salaryRange":  [
+                            10804,
+                            14496
+                        ]
+    },
+    {
+        "id":  19,
+        "title":  "Mid Full Stack Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "java",
+                               "redis",
+                               "react",
+                               "sql",
+                               "node"
+                           ],
+        "salaryRange":  [
+                            10025,
+                            13405
+                        ]
+    },
+    {
+        "id":  20,
+        "title":  "Mid Backend Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "python",
+                               "typescript",
+                               "react"
+                           ],
+        "salaryRange":  [
+                            10679,
+                            13272
+                        ]
+    },
+    {
+        "id":  21,
+        "title":  "Senior Platform Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "typescript",
+                               "javascript",
+                               "sql",
+                               "aws",
+                               "spring"
+                           ],
+        "salaryRange":  [
+                            15938,
+                            19139
+                        ]
+    },
+    {
+        "id":  22,
+        "title":  "Mid Application Architect",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "kafka",
+                               "react",
+                               "docker"
+                           ],
+        "salaryRange":  [
+                            8281,
+                            10497
+                        ]
+    },
+    {
+        "id":  23,
+        "title":  "Mid Cloud Engineer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "sql",
+                               "postgresql",
+                               "redis",
+                               "java",
+                               "typescript"
+                           ],
+        "salaryRange":  [
+                            9154,
+                            13083
+                        ]
+    },
+    {
+        "id":  24,
+        "title":  "Senior Full Stack Developer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "sql",
+                               "docker",
+                               "kafka",
+                               "java",
+                               "go"
+                           ],
+        "salaryRange":  [
+                            14447,
+                            16835
+                        ]
+    },
+    {
+        "id":  25,
+        "title":  "Senior Cloud Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "redis",
+                               "docker",
+                               "python",
+                               "go",
+                               "spring"
+                           ],
+        "salaryRange":  [
+                            13540,
+                            17040
+                        ]
+    },
+    {
+        "id":  26,
+        "title":  "Mid API Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "javascript",
+                               "node",
+                               "docker"
+                           ],
+        "salaryRange":  [
+                            10847,
+                            14322
+                        ]
+    },
+    {
+        "id":  27,
+        "title":  "Senior Site Reliability Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "python",
+                               "docker",
+                               "kafka",
+                               "react"
+                           ],
+        "salaryRange":  [
+                            13698,
+                            15481
+                        ]
+    },
+    {
+        "id":  28,
+        "title":  "Senior Backend Developer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "sql",
+                               "python",
+                               "postgresql",
+                               "spring",
+                               "aws"
+                           ],
+        "salaryRange":  [
+                            14705,
+                            17846
+                        ]
+    },
+    {
+        "id":  29,
+        "title":  "Mid ML Engineer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "go",
+                               "node",
+                               "redis",
+                               "docker"
+                           ],
+        "salaryRange":  [
+                            9888,
+                            13732
+                        ]
+    },
+    {
+        "id":  30,
+        "title":  "Mid Frontend Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "postgresql",
+                               "kubernetes",
+                               "python",
+                               "java",
+                               "aws"
+                           ],
+        "salaryRange":  [
+                            10768,
+                            12256
+                        ]
+    },
+    {
+        "id":  31,
+        "title":  "Mid ML Engineer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "node",
+                               "javascript",
+                               "java",
+                               "postgresql",
+                               "spring"
+                           ],
+        "salaryRange":  [
+                            9735,
+                            12283
+                        ]
+    },
+    {
+        "id":  32,
+        "title":  "Mid Site Reliability Engineer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "python",
+                               "typescript",
+                               "aws",
+                               "docker"
+                           ],
+        "salaryRange":  [
+                            8265,
+                            10470
+                        ]
+    },
+    {
+        "id":  33,
+        "title":  "Senior Software Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "sql",
+                               "javascript",
+                               "aws"
+                           ],
+        "salaryRange":  [
+                            12178,
+                            16016
+                        ]
+    },
+    {
+        "id":  34,
+        "title":  "Mid Cloud Engineer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "java",
+                               "go",
+                               "typescript"
+                           ],
+        "salaryRange":  [
+                            10821,
+                            13069
+                        ]
+    },
+    {
+        "id":  35,
+        "title":  "Mid Integration Engineer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "spring",
+                               "kubernetes",
+                               "java",
+                               "node"
+                           ],
+        "salaryRange":  [
+                            7838,
+                            10559
+                        ]
+    },
+    {
+        "id":  36,
+        "title":  "Junior Product Engineer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "java",
+                               "go",
+                               "node",
+                               "aws"
+                           ],
+        "salaryRange":  [
+                            6922,
+                            8952
+                        ]
+    },
+    {
+        "id":  37,
+        "title":  "Senior Backend Developer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "sql",
+                               "kafka",
+                               "typescript"
+                           ],
+        "salaryRange":  [
+                            12373,
+                            14132
+                        ]
+    },
+    {
+        "id":  38,
+        "title":  "Senior Frontend Developer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "sql",
+                               "kafka",
+                               "python",
+                               "postgresql",
+                               "typescript"
+                           ],
+        "salaryRange":  [
+                            16333,
+                            18965
+                        ]
+    },
+    {
+        "id":  39,
+        "title":  "Mid API Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "redis",
+                               "react",
+                               "node",
+                               "spring"
+                           ],
+        "salaryRange":  [
+                            7524,
+                            10245
+                        ]
+    },
+    {
+        "id":  40,
+        "title":  "Mid Frontend Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "javascript",
+                               "docker",
+                               "kubernetes",
+                               "sql",
+                               "typescript"
+                           ],
+        "salaryRange":  [
+                            8845,
+                            11045
+                        ]
+    },
+    {
+        "id":  41,
+        "title":  "Senior Platform Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "javascript",
+                               "kubernetes",
+                               "react"
+                           ],
+        "salaryRange":  [
+                            12586,
+                            16301
+                        ]
+    },
+    {
+        "id":  42,
+        "title":  "Junior Full Stack Developer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "redis",
+                               "java",
+                               "spring"
+                           ],
+        "salaryRange":  [
+                            6997,
+                            10667
+                        ]
+    },
+    {
+        "id":  43,
+        "title":  "Senior Product Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "python",
+                               "javascript",
+                               "aws"
+                           ],
+        "salaryRange":  [
+                            15494,
+                            18744
+                        ]
+    },
+    {
+        "id":  44,
+        "title":  "Junior API Developer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "aws",
+                               "docker",
+                               "kubernetes",
+                               "python",
+                               "go"
+                           ],
+        "salaryRange":  [
+                            6487,
+                            8923
+                        ]
+    },
+    {
+        "id":  45,
+        "title":  "Junior API Developer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "java",
+                               "typescript",
+                               "aws",
+                               "go",
+                               "sql"
+                           ],
+        "salaryRange":  [
+                            5521,
+                            9061
+                        ]
+    },
+    {
+        "id":  46,
+        "title":  "Junior Frontend Developer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "kafka",
+                               "kubernetes",
+                               "python",
+                               "javascript"
+                           ],
+        "salaryRange":  [
+                            6447,
+                            8297
+                        ]
+    },
+    {
+        "id":  47,
+        "title":  "Mid Full Stack Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "postgresql",
+                               "sql",
+                               "react"
+                           ],
+        "salaryRange":  [
+                            10026,
+                            13836
+                        ]
+    },
+    {
+        "id":  48,
+        "title":  "Mid API Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "aws",
+                               "typescript",
+                               "postgresql",
+                               "go",
+                               "javascript"
+                           ],
+        "salaryRange":  [
+                            8837,
+                            10553
+                        ]
+    },
+    {
+        "id":  49,
+        "title":  "Junior Cloud Engineer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "redis",
+                               "python",
+                               "aws",
+                               "java",
+                               "node"
+                           ],
+        "salaryRange":  [
+                            5948,
+                            8615
+                        ]
+    },
+    {
+        "id":  50,
+        "title":  "Junior DevOps Engineer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "javascript",
+                               "redis",
+                               "kafka",
+                               "docker",
+                               "postgresql"
+                           ],
+        "salaryRange":  [
+                            5136,
+                            8699
+                        ]
+    },
+    {
+        "id":  51,
+        "title":  "Mid Application Architect",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "typescript",
+                               "kubernetes",
+                               "postgresql"
+                           ],
+        "salaryRange":  [
+                            8492,
+                            10251
+                        ]
+    },
+    {
+        "id":  52,
+        "title":  "Mid Backend Developer",
+        "minimumSeniority":  "mid",
+        "requiredSkills":  [
+                               "redis",
+                               "go",
+                               "sql"
+                           ],
+        "salaryRange":  [
+                            10870,
+                            13349
+                        ]
+    },
+    {
+        "id":  53,
+        "title":  "Senior Site Reliability Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "java",
+                               "sql",
+                               "aws"
+                           ],
+        "salaryRange":  [
+                            15089,
+                            18661
+                        ]
+    },
+    {
+        "id":  54,
+        "title":  "Senior Data Engineer",
+        "minimumSeniority":  "senior",
+        "requiredSkills":  [
+                               "redis",
+                               "kubernetes",
+                               "node",
+                               "sql"
+                           ],
+        "salaryRange":  [
+                            14371,
+                            16931
+                        ]
+    },
+    {
+        "id":  55,
+        "title":  "Junior Full Stack Developer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "sql",
+                               "react",
+                               "java",
+                               "javascript"
+                           ],
+        "salaryRange":  [
+                            5469,
+                            6951
+                        ]
+    },
+    {
+        "id":  56,
+        "title":  "Junior Tech Lead",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "go",
+                               "java",
+                               "docker",
+                               "spring"
+                           ],
+        "salaryRange":  [
+                            4927,
+                            6988
+                        ]
+    },
+    {
+        "id":  57,
+        "title":  "Junior Integration Engineer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "node",
+                               "sql",
+                               "docker",
+                               "java",
+                               "spring"
+                           ],
+        "salaryRange":  [
+                            4721,
+                            7711
+                        ]
+    },
+    {
+        "id":  58,
+        "title":  "Junior Data Engineer",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "kafka",
+                               "kubernetes",
+                               "node",
+                               "redis",
+                               "python"
+                           ],
+        "salaryRange":  [
+                            5541,
+                            7438
+                        ]
+    },
+    {
+        "id":  59,
+        "title":  "Junior Application Architect",
+        "minimumSeniority":  "junior",
+        "requiredSkills":  [
+                               "aws",
+                               "node",
+                               "javascript"
+                           ],
+        "salaryRange":  [
+                            6652,
+                            8621
+                        ]
+    }
 ]

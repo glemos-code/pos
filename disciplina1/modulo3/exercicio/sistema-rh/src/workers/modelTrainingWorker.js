@@ -142,6 +142,7 @@ function createTrainingData(context) {
 }
 
 async function configureNeuralNetAndTrain(trainData) {
+    console.log('Backend:', tf.getBackend()) 
     const model = tf.sequential();
 
     model.add(
@@ -176,12 +177,19 @@ async function configureNeuralNetAndTrain(trainData) {
         metrics: ['accuracy'],
     });
 
+    console.time('treino total')
+    let lastEpochTime = performance.now()
     await model.fit(trainData.xs, trainData.ys, {
         epochs: 100,
         batchSize: 32,
         shuffle: true,
         callbacks: {
             onEpochEnd: (epoch, logs) => {
+                const now = performance.now()
+                if (epoch < 5 || epoch % 20 === 0) {
+                    console.log(`Época ${epoch}: ${(now - lastEpochTime).toFixed(1)}ms desde a última`)
+                }
+                lastEpochTime = now
                 postMessage({
                     type: workerEvents.trainingLog,
                     epoch,
