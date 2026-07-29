@@ -72,14 +72,6 @@ export default class Events {
   static dispatchJobsUpdated(data) {
     document.dispatchEvent(new CustomEvent(events.jobsUpdated, { detail: data }));
   }
-
-  static onHistoryUpdated(callback) {
-    document.addEventListener(events.historyUpdated, (event) => callback(event.detail));
-  }
-
-  static dispatchHistoryUpdated(data) {
-    document.dispatchEvent(new CustomEvent(events.historyUpdated, { detail: data }));
-  }
 }
 
 export { workerEvents };

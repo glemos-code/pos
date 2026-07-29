@@ -7,8 +7,7 @@ export const events = {
   trainingComplete: 'training:complete',
   modelProgressUpdate: 'model:progress-update',
   recommendationsReady: 'recommendations:ready',
-  recommend: 'recommend',
-  historyUpdated: 'history:updated'
+  recommend: 'recommend'
 };
 
 export const workerEvents = {

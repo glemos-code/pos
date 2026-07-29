@@ -1,56 +1,27 @@
 [
-  {
-    "id": 1,
-    "candidateId": 1,
-    "jobId": 10,
-    "status": "hired",
-    "label": 1,
-    "recruiterRating": 5,
-    "notes": "Strong technical fit and salary alignment"
-  },
-  {
-    "id": 2,
-    "candidateId": 2,
-    "jobId": 10,
-    "status": "rejected",
-    "label": 0,
-    "recruiterRating": 2,
-    "notes": "Lacked backend experience and seniority"
-  },
-  {
-    "id": 3,
-    "candidateId": 3,
-    "jobId": 12,
-    "status": "interview_approved",
-    "label": 1,
-    "recruiterRating": 4,
-    "notes": "Very strong profile for a senior role"
-  },
-  {
-    "id": 4,
-    "candidateId": 4,
-    "jobId": 11,
-    "status": "rejected",
-    "label": 0,
-    "recruiterRating": 1,
-    "notes": "Stack and seniority mismatch"
-  },
-  {
-    "id": 5,
-    "candidateId": 1,
-    "jobId": 11,
-    "status": "rejected",
-    "label": 0,
-    "recruiterRating": 2,
-    "notes": "Junior role does not fit a mid-level profile"
-  },
-  {
-    "id": 6,
-    "candidateId": 2,
-    "jobId": 11,
-    "status": "interview_approved",
-    "label": 1,
-    "recruiterRating": 4,
-    "notes": "Good fit for junior frontend"
-  }
+  { "candidateId": 1, "jobId": 10, "label": 1 },
+  { "candidateId": 1, "jobId": 10, "label": 1 },
+  { "candidateId": 1, "jobId": 10, "label": 1 },
+
+  { "candidateId": 2, "jobId": 11, "label": 1 },
+  { "candidateId": 2, "jobId": 11, "label": 1 },
+  { "candidateId": 2, "jobId": 11, "label": 1 },
+
+  { "candidateId": 3, "jobId": 12, "label": 1 },
+  { "candidateId": 3, "jobId": 12, "label": 1 },
+  { "candidateId": 3, "jobId": 12, "label": 1 },
+
+  { "candidateId": 1, "jobId": 11, "label": 0 },
+  { "candidateId": 1, "jobId": 12, "label": 0 },
+
+  { "candidateId": 2, "jobId": 10, "label": 0 },
+  { "candidateId": 2, "jobId": 10, "label": 0 },
+  { "candidateId": 2, "jobId": 12, "label": 0 },
+
+  { "candidateId": 3, "jobId": 10, "label": 0 },
+  { "candidateId": 3, "jobId": 11, "label": 0 },
+
+  { "candidateId": 4, "jobId": 10, "label": 0 },
+  { "candidateId": 4, "jobId": 11, "label": 0 },
+  { "candidateId": 4, "jobId": 12, "label": 0 }
 ]

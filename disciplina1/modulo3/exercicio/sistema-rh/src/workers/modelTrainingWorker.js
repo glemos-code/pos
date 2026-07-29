@@ -131,13 +131,13 @@ function createTrainingData(context) {
         const jobVector = encodeJob(job, context).dataSync();
 
         inputs.push([...candidateVector, ...jobVector]);
-        labels.push(unit.label);
+        labels.push(Number(unit.label));
     });
 
     return {
         xs: tf.tensor2d(inputs),
         ys: tf.tensor2d(labels, [labels.length, 1]),
-        inputDimension: inputs[0].length || context.dimensions * 2,
+        inputDimension: inputs[0].length || context.dimensions * 2
     };
 }
 

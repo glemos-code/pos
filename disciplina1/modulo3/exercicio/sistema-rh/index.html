@@ -136,52 +136,6 @@
           <div id="matchesResults" class="card-list"></div>
         </article>
       </section>
-
-      <section class="panel-grid">
-        <article class="panel full-width">
-          <div class="panel-header">
-            <h2>Real training history</h2>
-            <p>Register examples of hiring, approved interviews, rejections, and other events that will become labels for training.</p>
-          </div>
-
-          <form id="historyForm" class="form">
-            <div class="form-row">
-              <label>Candidate ID
-                <input id="historyCandidateId" type="number" required />
-              </label>
-              <label>Job ID
-                <input id="historyJobId" type="number" required />
-              </label>
-            </div>
-            <div class="form-row">
-              <label>Status
-                <select id="historyStatus">
-                  <option value="contratado">Hired</option>
-                  <option value="entrevista_aprovada">Interview approved</option>
-                  <option value="rejeitado">Rejected</option>
-                  <option value="avaliacao_recrutador">Recruiter evaluation</option>
-                </select>
-              </label>
-              <label>Label
-                <select id="historyLabel">
-                  <option value="1">1 - good match</option>
-                  <option value="0">0 - bad match</option>
-                </select>
-              </label>
-            </div>
-            <div class="form-row">
-              <label>Notes
-                <textarea id="historyNotes" rows="3"></textarea>
-              </label>
-            </div>
-            <div class="form-actions">
-              <button type="submit">Add to history</button>
-            </div>
-          </form>
-
-          <div id="historyList" class="card-list"></div>
-        </article>
-      </section>
     </main>
 
     <script type="module" src="./src/index.js"></script>
