@@ -140,6 +140,7 @@ export class ModelTrainingController {
             minimumSeniority: job.minimumSeniority,
             requiredSkills: job.requiredSkills || [],
             candidates: [],
+            salaryRange: job.salaryRange
           });
         }
 

@@ -1,78 +1,13 @@
 [
     {
-        "candidateId":  33,
-        "jobId":  28,
-        "label":  1
-    },
-    {
-        "candidateId":  42,
-        "jobId":  34,
-        "label":  0
-    },
-    {
-        "candidateId":  46,
-        "jobId":  27,
-        "label":  1
-    },
-    {
-        "candidateId":  30,
-        "jobId":  48,
-        "label":  0
-    },
-    {
-        "candidateId":  37,
-        "jobId":  51,
-        "label":  1
-    },
-    {
-        "candidateId":  42,
-        "jobId":  15,
-        "label":  1
-    },
-    {
-        "candidateId":  21,
-        "jobId":  10,
-        "label":  0
-    },
-    {
-        "candidateId":  28,
-        "jobId":  25,
-        "label":  1
-    },
-    {
         "candidateId":  41,
         "jobId":  27,
         "label":  1
     },
     {
-        "candidateId":  1,
-        "jobId":  53,
-        "label":  0
-    },
-    {
-        "candidateId":  21,
-        "jobId":  59,
+        "candidateId":  29,
+        "jobId":  27,
         "label":  1
-    },
-    {
-        "candidateId":  19,
-        "jobId":  18,
-        "label":  0
-    },
-    {
-        "candidateId":  33,
-        "jobId":  50,
-        "label":  0
-    },
-    {
-        "candidateId":  31,
-        "jobId":  57,
-        "label":  0
-    },
-    {
-        "candidateId":  38,
-        "jobId":  32,
-        "label":  0
     },
     {
         "candidateId":  36,
@@ -81,57 +16,22 @@
     },
     {
         "candidateId":  40,
-        "jobId":  12,
-        "label":  1
-    },
-    {
-        "candidateId":  33,
-        "jobId":  18,
-        "label":  0
-    },
-    {
-        "candidateId":  27,
-        "jobId":  15,
-        "label":  1
-    },
-    {
-        "candidateId":  9,
-        "jobId":  53,
-        "label":  0
-    },
-    {
-        "candidateId":  43,
-        "jobId":  45,
-        "label":  1
-    },
-    {
-        "candidateId":  43,
-        "jobId":  49,
-        "label":  0
-    },
-    {
-        "candidateId":  40,
         "jobId":  57,
         "label":  0
     },
     {
-        "candidateId":  25,
-        "jobId":  42,
+        "candidateId":  24,
+        "jobId":  54,
         "label":  0
     },
     {
-        "candidateId":  14,
-        "jobId":  16,
-        "label":  0
-    },
-    {
-        "candidateId":  29,
+        "candidateId":  46,
         "jobId":  27,
         "label":  1
     },
     {
-        "candidateId":  30,
-        "jobId":  54,
+        "candidateId":  31,
+        "jobId":  57,
         "label":  0
     },
     {
@@ -140,84 +40,19 @@
         "label":  0
     },
     {
-        "candidateId":  35,
-        "jobId":  57,
-        "label":  0
-    },
-    {
-        "candidateId":  15,
-        "jobId":  44,
-        "label":  0
-    },
-    {
-        "candidateId":  18,
-        "jobId":  28,
+        "candidateId":  38,
+        "jobId":  32,
         "label":  0
     },
     {
         "candidateId":  25,
-        "jobId":  40,
+        "jobId":  42,
         "label":  0
     },
     {
-        "candidateId":  36,
-        "jobId":  10,
-        "label":  0
-    },
-    {
-        "candidateId":  45,
-        "jobId":  47,
-        "label":  0
-    },
-    {
-        "candidateId":  20,
-        "jobId":  15,
+        "candidateId":  43,
+        "jobId":  45,
         "label":  1
-    },
-    {
-        "candidateId":  2,
-        "jobId":  11,
-        "label":  1
-    },
-    {
-        "candidateId":  20,
-        "jobId":  38,
-        "label":  0
-    },
-    {
-        "candidateId":  27,
-        "jobId":  47,
-        "label":  0
-    },
-    {
-        "candidateId":  36,
-        "jobId":  13,
-        "label":  0
-    },
-    {
-        "candidateId":  2,
-        "jobId":  31,
-        "label":  0
-    },
-    {
-        "candidateId":  33,
-        "jobId":  16,
-        "label":  0
-    },
-    {
-        "candidateId":  34,
-        "jobId":  35,
-        "label":  0
-    },
-    {
-        "candidateId":  27,
-        "jobId":  14,
-        "label":  0
-    },
-    {
-        "candidateId":  36,
-        "jobId":  29,
-        "label":  0
     },
     {
         "candidateId":  9,
@@ -230,13 +65,58 @@
         "label":  1
     },
     {
+        "candidateId":  33,
+        "jobId":  50,
+        "label":  0
+    },
+    {
+        "candidateId":  21,
+        "jobId":  10,
+        "label":  0
+    },
+    {
+        "candidateId":  2,
+        "jobId":  11,
+        "label":  1
+    },
+    {
+        "candidateId":  27,
+        "jobId":  14,
+        "label":  0
+    },
+    {
+        "candidateId":  14,
+        "jobId":  16,
+        "label":  0
+    },
+    {
+        "candidateId":  36,
+        "jobId":  10,
+        "label":  0
+    },
+    {
+        "candidateId":  1,
+        "jobId":  53,
+        "label":  0
+    },
+    {
+        "candidateId":  2,
+        "jobId":  31,
+        "label":  0
+    },
+    {
         "candidateId":  27,
         "jobId":  45,
         "label":  1
     },
     {
-        "candidateId":  27,
-        "jobId":  34,
+        "candidateId":  33,
+        "jobId":  28,
+        "label":  1
+    },
+    {
+        "candidateId":  30,
+        "jobId":  48,
         "label":  0
     },
     {
@@ -245,8 +125,128 @@
         "label":  0
     },
     {
-        "candidateId":  24,
+        "candidateId":  20,
+        "jobId":  38,
+        "label":  0
+    },
+    {
+        "candidateId":  18,
+        "jobId":  28,
+        "label":  0
+    },
+    {
+        "candidateId":  42,
+        "jobId":  15,
+        "label":  1
+    },
+    {
+        "candidateId":  19,
+        "jobId":  18,
+        "label":  0
+    },
+    {
+        "candidateId":  34,
+        "jobId":  35,
+        "label":  0
+    },
+    {
+        "candidateId":  9,
+        "jobId":  53,
+        "label":  0
+    },
+    {
+        "candidateId":  37,
+        "jobId":  51,
+        "label":  1
+    },
+    {
+        "candidateId":  27,
+        "jobId":  15,
+        "label":  1
+    },
+    {
+        "candidateId":  27,
+        "jobId":  47,
+        "label":  0
+    },
+    {
+        "candidateId":  33,
+        "jobId":  18,
+        "label":  0
+    },
+    {
+        "candidateId":  43,
+        "jobId":  49,
+        "label":  0
+    },
+    {
+        "candidateId":  33,
+        "jobId":  16,
+        "label":  0
+    },
+    {
+        "candidateId":  45,
+        "jobId":  47,
+        "label":  0
+    },
+    {
+        "candidateId":  28,
+        "jobId":  25,
+        "label":  1
+    },
+    {
+        "candidateId":  20,
+        "jobId":  15,
+        "label":  1
+    },
+    {
+        "candidateId":  27,
+        "jobId":  34,
+        "label":  0
+    },
+    {
+        "candidateId":  36,
+        "jobId":  29,
+        "label":  0
+    },
+    {
+        "candidateId":  25,
+        "jobId":  40,
+        "label":  0
+    },
+    {
+        "candidateId":  21,
+        "jobId":  59,
+        "label":  1
+    },
+    {
+        "candidateId":  42,
+        "jobId":  34,
+        "label":  0
+    },
+    {
+        "candidateId":  36,
+        "jobId":  13,
+        "label":  0
+    },
+    {
+        "candidateId":  30,
         "jobId":  54,
+        "label":  0
+    },
+    {
+        "candidateId":  35,
+        "jobId":  57,
+        "label":  0
+    },
+    {
+        "candidateId":  40,
+        "jobId":  12,
+        "label":  1
+    },
+    {
+        "candidateId":  15,
+        "jobId":  44,
         "label":  0
     }
 ]

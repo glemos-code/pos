@@ -72,6 +72,7 @@ const multiHotWeighted = (indices, length, weight) =>
     .mul(weight);
 
 function encodeJob(job, context) {
+        return tf.tidy(() => {
     const skillVector = multiHotWeighted(
         job.requiredSkills.map((skill) => context.skillsIndex[skill]),
         context.numSkills,
@@ -89,9 +90,11 @@ function encodeJob(job, context) {
     ).mul(WEIGHTS.salary);
 
     return tf.concat1d([salaryRangeVector, skillVector, seniorityVector]);
+})
 }
 
 function encodeCandidate(candidate, context) {
+    return tf.tidy(() => {
     const skillVector = multiHotWeighted(
         candidate.skills.map((skill) => context.skillsIndex[skill]),
         context.numSkills,
@@ -113,6 +116,7 @@ function encodeCandidate(candidate, context) {
     ]).mul(WEIGHTS.experience);
 
     return tf.concat1d([experienceVector, salaryVector, skillVector, seniorityVector]);
+})
 }
 
 function createTrainingData(context) {
@@ -148,21 +152,14 @@ async function configureNeuralNetAndTrain(trainData) {
     model.add(
         tf.layers.dense({
             inputShape: [trainData.inputDimension],
-            units: 128,
+            units: 16,
             activation: 'relu',
         })
     );
 
     model.add(
         tf.layers.dense({
-            units: 64,
-            activation: 'relu',
-        })
-    );
-
-    model.add(
-        tf.layers.dense({
-            units: 32,
+            units: 8,
             activation: 'relu',
         })
     );
@@ -185,6 +182,7 @@ async function configureNeuralNetAndTrain(trainData) {
         shuffle: true,
         callbacks: {
             onEpochEnd: (epoch, logs) => {
+                console.log(`Tensores ativos: ${tf.memory().numTensors}`)
                 const now = performance.now()
                 if (epoch < 5 || epoch % 20 === 0) {
                     console.log(`Época ${epoch}: ${(now - lastEpochTime).toFixed(1)}ms desde a última`)
