@@ -16,125 +16,117 @@
         </div>
       </header>
 
-      <section class="panel-grid top-grid">
-        <article class="panel">
-          <div class="panel-header">
-            <h2>Training and matches</h2>
-            <p>Use the button below to start training and generate the possible matches between candidates and jobs.</p>
-          </div>
-          <div class="form-actions">
-            <button type="button" id="trainModelButton">Train model</button>
-          </div>
-          <div id="trainingStatus" class="status-box">Waiting for training...</div>
-        </article>
-
-        <article class="panel match-panel">
-          <div class="panel-header">
-            <h2>Possible matches</h2>
-            <p>Results will appear here with the compatibility percentage for each candidate.</p>
-          </div>
-          <div id="matchesResults" class="card-list"></div>
-        </article>
-      </section>
-
-      <section class="panel-grid">
-        <article class="panel">
-          <div class="panel-header">
-            <h2>Candidates</h2>
-            <p>Register and edit professional profiles.</p>
-          </div>
-
-          <form id="candidateForm" class="form">
-            <input type="hidden" id="candidateId" />
-            <div class="form-row">
-              <label>Name
-                <input id="candidateName" required />
-              </label>
+      <section class="workspace-grid">
+        <section class="left-column">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Candidates</h2>
+              <p>Register and edit professional profiles.</p>
             </div>
-            <div class="form-row">
-              <label>Experience (years)
-                <input id="candidateExperience" type="number" min="0" required />
-              </label>
-              <label>Seniority
-                <select id="candidateSeniority" required>
-                  <option value="júnior">Junior</option>
-                  <option value="pleno">Mid</option>
-                  <option value="sênior">Senior</option>
-                </select>
-              </label>
+
+            <form id="candidateForm" class="form">
+              <input type="hidden" id="candidateId" />
+              <div class="form-row">
+                <label>Name
+                  <input id="candidateName" required />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Experience (years)
+                  <input id="candidateExperience" type="number" min="0" required />
+                </label>
+                <label>Seniority
+                  <select id="candidateSeniority" required>
+                    <option value="júnior">Junior</option>
+                    <option value="pleno">Mid</option>
+                    <option value="sênior">Senior</option>
+                  </select>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Skills (comma separated)
+                  <input id="candidateSkills" placeholder="java, spring, kafka" required />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Salary expectation
+                  <input id="candidateSalary" type="number" min="0" required />
+                </label>
+              </div>
+              <div class="form-actions">
+                <button type="submit" id="candidateSubmitButton">Add candidate</button>
+                <button type="button" id="candidateCancelButton" class="secondary">Cancel</button>
+              </div>
+            </form>
+
+            <div id="candidateList" class="card-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Jobs</h2>
+              <p>Register and edit job requirements.</p>
             </div>
-            <div class="form-row">
-              <label>Skills (comma separated)
-                <input id="candidateSkills" placeholder="java, spring, kafka" required />
-              </label>
-            </div>
-            <div class="form-row">
-              <label>Salary expectation
-                <input id="candidateSalary" type="number" min="0" required />
-              </label>
+
+            <form id="jobForm" class="form">
+              <input type="hidden" id="jobId" />
+              <div class="form-row">
+                <label>Title
+                  <input id="jobTitle" required />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Minimum seniority
+                  <select id="jobSeniority" required>
+                    <option value="júnior">Junior</option>
+                    <option value="pleno">Mid</option>
+                    <option value="sênior">Senior</option>
+                  </select>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Required skills (comma separated)
+                  <input id="jobSkills" placeholder="java, spring, docker" required />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Minimum salary
+                  <input id="jobMinSalary" type="number" min="0" required />
+                </label>
+                <label>Maximum salary
+                  <input id="jobMaxSalary" type="number" min="0" required />
+                </label>
+              </div>
+              <div class="form-actions">
+                <button type="submit" id="jobSubmitButton">Add job</button>
+                <button type="button" id="jobCancelButton" class="secondary">Cancel</button>
+              </div>
+            </form>
+
+            <div id="jobList" class="card-list"></div>
+          </article>
+        </section>
+
+        <section class="right-column">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Training</h2>
+              <p>Train the model and check match results.</p>
             </div>
             <div class="form-actions">
-              <button type="submit" id="candidateSubmitButton">Add candidate</button>
-              <button type="button" id="candidateCancelButton" class="secondary">Cancel</button>
+              <button type="button" id="trainModelButton">Train</button>
             </div>
-          </form>
+            <div id="trainingStatus" class="status-box">Waiting for training...</div>
+          </article>
 
-          <div id="candidateList" class="card-list"></div>
-        </article>
-
-        <article class="panel">
-          <div class="panel-header">
-            <h2>Jobs</h2>
-            <p>Register and edit job requirements.</p>
-          </div>
-
-          <form id="jobForm" class="form">
-            <input type="hidden" id="jobId" />
-            <div class="form-row">
-              <label>Title
-                <input id="jobTitle" required />
-              </label>
+          <article class="panel match-panel">
+            <div class="panel-header">
+              <h2>Matches</h2>
+              <p> </p>
             </div>
-            <div class="form-row">
-              <label>Minimum seniority
-                <select id="jobSeniority" required>
-                  <option value="júnior">Junior</option>
-                  <option value="pleno">Mid</option>
-                  <option value="sênior">Senior</option>
-                </select>
-              </label>
-            </div>
-            <div class="form-row">
-              <label>Required skills (comma separated)
-                <input id="jobSkills" placeholder="java, spring, docker" required />
-              </label>
-            </div>
-            <div class="form-row">
-              <label>Minimum salary
-                <input id="jobMinSalary" type="number" min="0" required />
-              </label>
-              <label>Maximum salary
-                <input id="jobMaxSalary" type="number" min="0" required />
-              </label>
-            </div>
-            <div class="form-actions">
-              <button type="submit" id="jobSubmitButton">Add job</button>
-              <button type="button" id="jobCancelButton" class="secondary">Cancel</button>
-            </div>
-          </form>
-
-          <div id="jobList" class="card-list"></div>
-        </article>
-      </section>
-
-      <section class="panel-grid">
-        <article class="panel full-width">
-          <div class="panel-header">
-            <h2>Possible matches</h2>
-            <p>Results will appear here with the compatibility percentage for each candidate.</p>
-          </div>
-          <div id="matchesResults" class="card-list"></div>
-        </article>
+            <div id="matchesResults" class="card-list empty-state"></div>
+          </article>
+        </section>
       </section>
     </main>
 

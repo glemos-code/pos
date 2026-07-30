@@ -149,10 +149,10 @@ function createTrainingData(context) {
 
         const candidateVector = encodeCandidate(candidate, context).dataSync();
         const jobVector = encodeJob(job, context).dataSync();
-        const skillOverlapRatio = skillOverlapRatio(candidate, job);
+        const skillOverlap = skillOverlapRatio(candidate, job);
         const seniorityFit = seniorityFitBusinessRule(candidate, job);
 
-        inputs.push([...candidateVector, ...jobVector, skillOverlapRatio, seniorityFit]);
+        inputs.push([...candidateVector, ...jobVector, skillOverlap, seniorityFit]);
         labels.push(Number(unit.label) === 1 ? 0.9 : 0.1 );
     });
 
