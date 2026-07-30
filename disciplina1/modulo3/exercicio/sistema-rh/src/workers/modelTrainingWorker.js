@@ -180,6 +180,7 @@ async function configureNeuralNetAndTrain(trainData) {
         epochs: 100,
         batchSize: 32,
         shuffle: true,
+        validationSplit: 0.2,
         callbacks: {
             onEpochEnd: (epoch, logs) => {
                 console.log(`Tensores ativos: ${tf.memory().numTensors}`)
