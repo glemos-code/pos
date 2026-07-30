@@ -5,9 +5,9 @@ let _globalCtx = {};
 let _model = null;
 
 const WEIGHTS = {
-    skills: 0.4,
-    seniority: 0.3,
-    experience: 0.2,
+    skills: 0.7,
+    seniority: 0.4,
+    experience: 0.25,
     salary: 0.1,
 };
 
@@ -125,6 +125,16 @@ function skillOverlapRatio(candidate, job) {
     return overlap / job.requiredSkills.length;
 }
 
+const SENIORITY_RANK = { junior: 0, mid: 1, senior: 2 };
+
+function seniorityFitBusinessRule(candidate, job) {
+    const diff = SENIORITY_RANK[candidate.seniority] - SENIORITY_RANK[job.minimumSeniority];
+    if (diff === 0) return 1.0;   // nível exato pedido
+    if (diff === 1) return 0.6;   // "recém-promovido", aceitável mas não ideal
+    if (diff >= 2) return -0.8;   // muito acima (ex: sênior pra vaga júnior) -> penaliza forte
+    return -0.5;                  // abaixo do exigido -> também penaliza
+}
+
 function createTrainingData(context) {
     const inputs = [];
     const labels = [];
@@ -139,10 +149,11 @@ function createTrainingData(context) {
 
         const candidateVector = encodeCandidate(candidate, context).dataSync();
         const jobVector = encodeJob(job, context).dataSync();
-        const overlapRatio = skillOverlapRatio(candidate, job);
+        const skillOverlapRatio = skillOverlapRatio(candidate, job);
+        const seniorityFit = seniorityFitBusinessRule(candidate, job);
 
-        inputs.push([...candidateVector, ...jobVector, overlapRatio]);
-        labels.push(Number(unit.label));
+        inputs.push([...candidateVector, ...jobVector, skillOverlapRatio, seniorityFit]);
+        labels.push(Number(unit.label) === 1 ? 0.9 : 0.1 );
     });
 
     return {

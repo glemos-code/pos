@@ -147,7 +147,7 @@ export class ModelTrainingController {
         byJob.get(jobId).candidates.push({
           candidate,
           candidateName: candidate.name,
-          score: Math.round((Number(job.score) || 0) * 100),
+          score: Number(job.score)* 100 || 0,
         });
       });
     });
