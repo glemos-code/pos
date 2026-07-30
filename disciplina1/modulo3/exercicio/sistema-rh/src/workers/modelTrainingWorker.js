@@ -119,6 +119,12 @@ function encodeCandidate(candidate, context) {
 })
 }
 
+function skillOverlapRatio(candidate, job) {
+    if (!job.requiredSkills.length) return 0;
+    const overlap = candidate.skills.filter((s) => job.requiredSkills.includes(s)).length;
+    return overlap / job.requiredSkills.length;
+}
+
 function createTrainingData(context) {
     const inputs = [];
     const labels = [];
@@ -133,15 +139,16 @@ function createTrainingData(context) {
 
         const candidateVector = encodeCandidate(candidate, context).dataSync();
         const jobVector = encodeJob(job, context).dataSync();
+        const overlapRatio = skillOverlapRatio(candidate, job);
 
-        inputs.push([...candidateVector, ...jobVector]);
+        inputs.push([...candidateVector, ...jobVector, overlapRatio]);
         labels.push(Number(unit.label));
     });
 
     return {
         xs: tf.tensor2d(inputs),
         ys: tf.tensor2d(labels, [labels.length, 1]),
-        inputDimension: inputs[0].length || context.dimensions * 2
+        inputDimension: inputs[0].length
     };
 }
 
@@ -231,7 +238,7 @@ function recommend({ candidate }) {
     const context = _globalCtx;
     const candidateVector = encodeCandidate(candidate, context).dataSync();
 
-    const inputs = context.jobVectors.map(({ vector }) => [...candidateVector, ...vector]);
+    const inputs = context.jobVectors.map(({ meta, vector }) => [...candidateVector, ...vector, skillOverlapRatio(candidate, meta)]);
     const inputTensor = tf.tensor2d(inputs);
     const predictions = _model.predict(inputTensor);
 
