@@ -249,7 +249,7 @@ function recommend({ candidate }) {
     const context = _globalCtx;
     const candidateVector = encodeCandidate(candidate, context).dataSync();
 
-    const inputs = context.jobVectors.map(({ meta, vector }) => [...candidateVector, ...vector, skillOverlapRatio(candidate, meta)]);
+    const inputs = context.jobVectors.map(({ meta, vector }) => [...candidateVector, ...vector, skillOverlapRatio(candidate, meta), seniorityFitBusinessRule(candidate, meta)]);
     const inputTensor = tf.tensor2d(inputs);
     const predictions = _model.predict(inputTensor);
 
