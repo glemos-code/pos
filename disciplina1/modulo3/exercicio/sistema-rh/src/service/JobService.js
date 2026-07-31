@@ -35,7 +35,6 @@ export class JobService {
   }
 
   async addJob(job) {
-    const jobs = await this.getJobs();
     const normalizedJob = this.normalizeJob(job);
     const nextJob = {
       ...normalizedJob,
@@ -44,27 +43,60 @@ export class JobService {
       salaryRange: [Number(normalizedJob.salaryRange[0]), Number(normalizedJob.salaryRange[1])]
     };
 
-    const updated = [...jobs, nextJob];
-    localStorage.setItem(this.storageKey, JSON.stringify(updated));
-    return updated;
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/jobs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nextJob)
+      });
+
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
+      }
+
+      return await this.getJobs();
+    } catch (_error) {
+      const jobs = await this.getJobs();
+      const updated = [...jobs, nextJob];
+      localStorage.setItem(this.storageKey, JSON.stringify(updated));
+      return updated;
+    }
   }
 
   async updateJob(job) {
-    const jobs = await this.getJobs();
     const normalizedJob = this.normalizeJob(job);
-    const updated = jobs.map((item) => {
-      if (item.id !== normalizedJob.id) return item;
-      return {
-        ...item,
-        ...normalizedJob,
-        id: Number(normalizedJob.id),
-        requiredSkills: this.parseSkills(normalizedJob.requiredSkills),
-        salaryRange: [Number(normalizedJob.salaryRange[0]), Number(normalizedJob.salaryRange[1])]
-      };
-    });
+    const payload = {
+      ...normalizedJob,
+      id: Number(normalizedJob.id),
+      requiredSkills: this.parseSkills(normalizedJob.requiredSkills),
+      salaryRange: [Number(normalizedJob.salaryRange[0]), Number(normalizedJob.salaryRange[1])]
+    };
 
-    localStorage.setItem(this.storageKey, JSON.stringify(updated));
-    return updated;
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/jobs/${payload.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
+      }
+
+      return await this.getJobs();
+    } catch (_error) {
+      const jobs = await this.getJobs();
+      const updated = jobs.map((item) => {
+        if (item.id !== payload.id) return item;
+        return {
+          ...item,
+          ...payload
+        };
+      });
+
+      localStorage.setItem(this.storageKey, JSON.stringify(updated));
+      return updated;
+    }
   }
 
   normalizeJobs(jobs) {

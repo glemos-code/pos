@@ -35,7 +35,6 @@ export class CandidateService {
   }
 
   async addCandidate(candidate) {
-    const candidates = await this.getCandidates();
     const normalizedCandidate = this.normalizeCandidate(candidate);
     const nextCandidate = {
       ...normalizedCandidate,
@@ -45,28 +44,61 @@ export class CandidateService {
       skills: this.parseSkills(normalizedCandidate.skills)
     };
 
-    const updated = [...candidates, nextCandidate];
-    localStorage.setItem(this.storageKey, JSON.stringify(updated));
-    return updated;
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/candidates`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nextCandidate)
+      });
+
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
+      }
+
+      return await this.getCandidates();
+    } catch (_error) {
+      const candidates = await this.getCandidates();
+      const updated = [...candidates, nextCandidate];
+      localStorage.setItem(this.storageKey, JSON.stringify(updated));
+      return updated;
+    }
   }
 
   async updateCandidate(candidate) {
-    const candidates = await this.getCandidates();
     const normalizedCandidate = this.normalizeCandidate(candidate);
-    const updated = candidates.map((item) => {
-      if (item.id !== normalizedCandidate.id) return item;
-      return {
-        ...item,
-        ...normalizedCandidate,
-        id: Number(normalizedCandidate.id),
-        yearsExperience: Number(normalizedCandidate.yearsExperience),
-        salaryExpectation: Number(normalizedCandidate.salaryExpectation),
-        skills: this.parseSkills(normalizedCandidate.skills)
-      };
-    });
+    const payload = {
+      ...normalizedCandidate,
+      id: Number(normalizedCandidate.id),
+      yearsExperience: Number(normalizedCandidate.yearsExperience),
+      salaryExpectation: Number(normalizedCandidate.salaryExpectation),
+      skills: this.parseSkills(normalizedCandidate.skills)
+    };
 
-    localStorage.setItem(this.storageKey, JSON.stringify(updated));
-    return updated;
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/candidates/${payload.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
+      }
+
+      return await this.getCandidates();
+    } catch (_error) {
+      const candidates = await this.getCandidates();
+      const updated = candidates.map((item) => {
+        if (item.id !== payload.id) return item;
+        return {
+          ...item,
+          ...payload
+        };
+      });
+
+      localStorage.setItem(this.storageKey, JSON.stringify(updated));
+      return updated;
+    }
   }
 
   normalizeCandidates(candidates) {

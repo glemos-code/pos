@@ -1,13 +1,15 @@
 import express from 'express';
 import { testDatabaseConnection } from './db/pool.js';
 import { readRoutes } from './routes/readRoutes.js';
+import { vectorRoutes } from './routes/vectorRoutes.js';
+import { writeRoutes } from './routes/writeRoutes.js';
 
 export function createApp() {
   const app = express();
 
   app.use((_req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     if (_req.method === 'OPTIONS') {
@@ -20,6 +22,8 @@ export function createApp() {
 
   app.use(express.json());
   app.use(readRoutes);
+  app.use(writeRoutes);
+  app.use(vectorRoutes);
 
   app.get('/health', async (_req, res, next) => {
     try {
@@ -32,6 +36,14 @@ export function createApp() {
 
   app.use((err, _req, res, _next) => {
     console.error(err);
+
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+      res.status(400).json({
+        error: 'invalid_json',
+        message: 'Request body must be valid JSON.'
+      });
+      return;
+    }
 
     if (err?.code === '42P01') {
       res.status(503).json({

@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "start": "powershell -ExecutionPolicy Bypass -File ../infra/init-db.ps1 && node src/index.js",
+    "start": "node src/index.js",
+    "start:with-db": "powershell -ExecutionPolicy Bypass -File ../infra/init-db.ps1 && node src/index.js",
     "dev": "node --watch src/index.js"
   },
   "dependencies": {

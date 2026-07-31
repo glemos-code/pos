@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS public.candidates (
   id BIGINT PRIMARY KEY,
   metadata JSONB NOT NULL,
-  embedding VECTOR
+  embedding VECTOR(20)
 );
 
 CREATE TABLE IF NOT EXISTS public.jobs (
   id BIGINT PRIMARY KEY,
   metadata JSONB NOT NULL,
-  embedding VECTOR
+  embedding VECTOR(20)
 );
 
 CREATE TABLE IF NOT EXISTS public.match_history (

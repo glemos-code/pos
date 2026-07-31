@@ -2,6 +2,7 @@ param(
   [string]$ComposeFile = "infra/compose.yaml",
   [string]$ServiceName = "db",
   [string[]]$SqlFiles = @(
+    "backend/db/migrations/000_enable_vector_extension.sql",
     "backend/db/migrations/001_create_tables.sql",
     "backend/db/migrations/002_insert_data_if_not_exists.sql"
   )
