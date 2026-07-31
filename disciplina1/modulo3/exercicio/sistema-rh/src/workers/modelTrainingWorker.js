@@ -3,6 +3,20 @@ import { workerEvents } from '../events/constants.js';
 
 let _globalCtx = {};
 let _model = null;
+const API_BASE_URL = 'http://localhost:3333';
+
+async function fetchJsonFromApiWithFallback(apiPath, fallbackPath) {
+    try {
+        const response = await fetch(`${API_BASE_URL}${apiPath}`);
+        if (!response.ok) {
+            throw new Error(`API returned status ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (_error) {
+        return await (await fetch(new URL(fallbackPath, import.meta.url))).json();
+    }
+}
 
 const WEIGHTS = {
     skills: 0.7,
@@ -223,9 +237,9 @@ async function configureNeuralNetAndTrain(trainData) {
 async function trainModel({ candidates, jobs, history }) {
     postMessage({ type: workerEvents.progressUpdate, progress: { progress: 1 } });
 
-    const resolvedCandidates = candidates || await (await fetch(new URL('../../data/candidates.json', import.meta.url))).json();
-    const resolvedJobs = jobs || await (await fetch(new URL('../../data/jobs.json', import.meta.url))).json();
-    const resolvedHistory = history || await (await fetch(new URL('../../data/history.json', import.meta.url))).json();
+    const resolvedCandidates = candidates || await fetchJsonFromApiWithFallback('/candidates', '../../data/candidates.json');
+    const resolvedJobs = jobs || await fetchJsonFromApiWithFallback('/jobs', '../../data/jobs.json');
+    const resolvedHistory = history || await fetchJsonFromApiWithFallback('/history', '../../data/history.json');
 
     const context = makeContext(resolvedJobs, resolvedCandidates, resolvedHistory);
     context.jobVectors = resolvedJobs.map((job) => ({

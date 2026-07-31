@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "pwd-test",
+			"type": "shell",
+			"command": "Get-Location",
+			"isBackground": false
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "sistema-rh-api",
+  "version": "1.0.0",
+  "description": "Minimal API for RH matching data",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "powershell -ExecutionPolicy Bypass -File ../infra/init-db.ps1 && node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}

@@ -1,24 +1,37 @@
 export class CandidateService {
   constructor() {
     this.storageKey = 'rh-candidates';
+    this.apiBaseUrl = 'http://localhost:3333';
   }
 
   async getCandidates() {
-    const stored = localStorage.getItem(this.storageKey);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      const normalized = this.normalizeCandidates(parsed);
-      if (JSON.stringify(parsed) !== JSON.stringify(normalized)) {
-        localStorage.setItem(this.storageKey, JSON.stringify(normalized));
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/candidates`);
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
       }
+
+      const candidates = await response.json();
+      const normalized = this.normalizeCandidates(candidates);
+      localStorage.setItem(this.storageKey, JSON.stringify(normalized));
+      return normalized;
+    } catch (_error) {
+      const stored = localStorage.getItem(this.storageKey);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        const normalized = this.normalizeCandidates(parsed);
+        if (JSON.stringify(parsed) !== JSON.stringify(normalized)) {
+          localStorage.setItem(this.storageKey, JSON.stringify(normalized));
+        }
+        return normalized;
+      }
+
+      const response = await fetch(new URL('../../data/candidates.json', import.meta.url));
+      const candidates = await response.json();
+      const normalized = this.normalizeCandidates(candidates);
+      localStorage.setItem(this.storageKey, JSON.stringify(normalized));
       return normalized;
     }
-
-    const response = await fetch(new URL('../../data/candidates.json', import.meta.url));
-    const candidates = await response.json();
-    const normalized = this.normalizeCandidates(candidates);
-    localStorage.setItem(this.storageKey, JSON.stringify(normalized));
-    return normalized;
   }
 
   async addCandidate(candidate) {

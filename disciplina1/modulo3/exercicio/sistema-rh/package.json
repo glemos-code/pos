@@ -4,7 +4,8 @@
   "description": "Candidate and job matching project for an ML/RH exercise",
   "type": "module",
   "scripts": {
-    "start": "browser-sync -w . --server --files \"index.html, style.css, data/*.json, src/**/*.js, src/**/*.html\" --port 3000",
+    "start": "npm run db:init && browser-sync -w . --server --files \"index.html, style.css, data/*.json, src/**/*.js, src/**/*.html\" --port 3000",
+    "db:init": "powershell -ExecutionPolicy Bypass -File ./infra/init-db.ps1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

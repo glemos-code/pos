@@ -1,24 +1,37 @@
 export class JobService {
   constructor() {
     this.storageKey = 'rh-jobs';
+    this.apiBaseUrl = 'http://localhost:3333';
   }
 
   async getJobs() {
-    const stored = localStorage.getItem(this.storageKey);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      const normalized = this.normalizeJobs(parsed);
-      if (JSON.stringify(parsed) !== JSON.stringify(normalized)) {
-        localStorage.setItem(this.storageKey, JSON.stringify(normalized));
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/jobs`);
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
       }
+
+      const jobs = await response.json();
+      const normalized = this.normalizeJobs(jobs);
+      localStorage.setItem(this.storageKey, JSON.stringify(normalized));
+      return normalized;
+    } catch (_error) {
+      const stored = localStorage.getItem(this.storageKey);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        const normalized = this.normalizeJobs(parsed);
+        if (JSON.stringify(parsed) !== JSON.stringify(normalized)) {
+          localStorage.setItem(this.storageKey, JSON.stringify(normalized));
+        }
+        return normalized;
+      }
+
+      const response = await fetch(new URL('../../data/jobs.json', import.meta.url));
+      const jobs = await response.json();
+      const normalized = this.normalizeJobs(jobs);
+      localStorage.setItem(this.storageKey, JSON.stringify(normalized));
       return normalized;
     }
-
-    const response = await fetch(new URL('../../data/jobs.json', import.meta.url));
-    const jobs = await response.json();
-    const normalized = this.normalizeJobs(jobs);
-    localStorage.setItem(this.storageKey, JSON.stringify(normalized));
-    return normalized;
   }
 
   async addJob(job) {
