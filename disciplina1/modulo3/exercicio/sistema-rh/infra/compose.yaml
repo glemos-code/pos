@@ -16,4 +16,4 @@ services:
       retries: 10
 
 volumes:
-  rh_match_pgdata:
+  rh_match_pgdata_v2:

@@ -109,6 +109,14 @@ function handleVectorError(error, res, next) {
     return;
   }
 
+  if (error?.code === 'NOT_FOUND') {
+    res.status(404).json({
+      error: 'not_found',
+      message: error.message
+    });
+    return;
+  }
+
   next(error);
 }
 
