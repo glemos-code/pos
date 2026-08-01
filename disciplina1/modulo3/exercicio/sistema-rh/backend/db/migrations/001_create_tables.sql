@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS public.candidates (
   id BIGINT PRIMARY KEY,
   metadata JSONB NOT NULL,
   embedding VECTOR(20),
-  embedding_version TEXT,
+  embedding_version TEXT
 );
 
 CREATE TABLE IF NOT EXISTS public.jobs (
