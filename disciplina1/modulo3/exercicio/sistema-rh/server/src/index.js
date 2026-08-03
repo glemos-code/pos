@@ -1,7 +1,7 @@
 import { createApp } from './app.js';
 import { testDatabaseConnection } from './db/pool.js';
 
-const port = Number(process.env.API_PORT || process.env.PORT || 3333);
+const port = Number(process.env.API_PORT || process.env.PORT || 3334);
 const app = createApp();
 
 async function start() {

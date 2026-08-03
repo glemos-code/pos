@@ -3,7 +3,7 @@ import { workerEvents } from '../events/constants.js';
 
 let _globalCtx = {};
 let _model = null;
-const API_BASE_URL = 'http://localhost:3333';
+const API_BASE_URL = 'http://localhost:3334';
 
 async function fetchJsonFromApiWithFallback(apiPath, fallbackPath) {
     try {
@@ -18,10 +18,40 @@ async function fetchJsonFromApiWithFallback(apiPath, fallbackPath) {
     }
 }
 
+async function saveEmbedding(entityType, id, embedding, embeddingVersion = 'v1') {
+    try {
+        const response = await fetch(`${API_BASE_URL}/${entityType}/${id}/embedding`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ embedding, embeddingVersion })
+        });
+
+        if (!response.ok) {
+            return;
+        }
+    } catch (_error) {
+        // Keep training resilient even when embedding endpoint is not implemented yet.
+    }
+}
+
+async function persistEmbeddingsFromTraining(context, candidates, jobs) {
+    const candidateRequests = candidates.map((candidate) => {
+        const embedding = Array.from(encodeCandidate(candidate, context).dataSync());
+        return saveEmbedding('candidates', candidate.id, embedding, 'v1');
+    });
+
+    const jobRequests = jobs.map((job) => {
+        const embedding = Array.from(encodeJob(job, context).dataSync());
+        return saveEmbedding('jobs', job.id, embedding, 'v1');
+    });
+
+    await Promise.all([...candidateRequests, ...jobRequests]);
+}
+
 const WEIGHTS = {
     skills: 0.7,
     seniority: 0.4,
-    experience: 0.25,
+    experience: 0.1,
     salary: 0.1,
 };
 
@@ -252,6 +282,8 @@ async function trainModel({ candidates, jobs, history }) {
 
     const trainData = createTrainingData(context);
     _model = await configureNeuralNetAndTrain(trainData);
+
+    await persistEmbeddingsFromTraining(context, resolvedCandidates, resolvedJobs);
 
     postMessage({ type: workerEvents.progressUpdate, progress: { progress: 100 } });
     postMessage({ type: workerEvents.trainingComplete });

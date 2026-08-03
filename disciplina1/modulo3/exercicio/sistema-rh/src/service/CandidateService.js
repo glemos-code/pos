@@ -1,7 +1,7 @@
 export class CandidateService {
   constructor() {
     this.storageKey = 'rh-candidates';
-    this.apiBaseUrl = 'http://localhost:3333';
+    this.apiBaseUrl = 'http://localhost:3334';
   }
 
   async getCandidates() {
@@ -44,24 +44,17 @@ export class CandidateService {
       skills: this.parseSkills(normalizedCandidate.skills)
     };
 
-    try {
-      const response = await fetch(`${this.apiBaseUrl}/candidates`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nextCandidate)
-      });
+    const response = await fetch(`${this.apiBaseUrl}/candidates`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nextCandidate)
+    });
 
-      if (!response.ok) {
-        throw new Error(`API returned status ${response.status}`);
-      }
-
-      return await this.getCandidates();
-    } catch (_error) {
-      const candidates = await this.getCandidates();
-      const updated = [...candidates, nextCandidate];
-      localStorage.setItem(this.storageKey, JSON.stringify(updated));
-      return updated;
+    if (!response.ok) {
+      throw new Error(`Failed to save candidate in API. Status: ${response.status}`);
     }
+
+    return await this.getCandidates();
   }
 
   async updateCandidate(candidate) {
@@ -74,31 +67,17 @@ export class CandidateService {
       skills: this.parseSkills(normalizedCandidate.skills)
     };
 
-    try {
-      const response = await fetch(`${this.apiBaseUrl}/candidates/${payload.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+    const response = await fetch(`${this.apiBaseUrl}/candidates/${payload.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
 
-      if (!response.ok) {
-        throw new Error(`API returned status ${response.status}`);
-      }
-
-      return await this.getCandidates();
-    } catch (_error) {
-      const candidates = await this.getCandidates();
-      const updated = candidates.map((item) => {
-        if (item.id !== payload.id) return item;
-        return {
-          ...item,
-          ...payload
-        };
-      });
-
-      localStorage.setItem(this.storageKey, JSON.stringify(updated));
-      return updated;
+    if (!response.ok) {
+      throw new Error(`Failed to update candidate in API. Status: ${response.status}`);
     }
+
+    return await this.getCandidates();
   }
 
   normalizeCandidates(candidates) {
